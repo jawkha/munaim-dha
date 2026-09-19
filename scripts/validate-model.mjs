@@ -1,0 +1,16 @@
+import {readFile} from 'node:fs/promises';
+const root = new URL('../site/',import.meta.url);
+for(const variant of ['', 'realistic/']){
+console.log('Validate '+(variant||'original'));
+let source = await readFile(new URL(variant+'app.js',root),'utf8');
+source = source.replace("from 'three'", "from '"+new URL('assets/three.module.js',root).href+"'")
+ .replace(/import \{OrbitControls\} from '[^']+OrbitControls.js';/, 'class OrbitControls {constructor(){this.target=new THREE.Vector3()} update(){}}')
+ .replace("import {enhanceHouse} from './realism.js';", 'function enhanceHouse(){return {ready:Promise.resolve(),setView(){},tick(){}}}')
+ .replace("from './model.js'", "from '"+new URL(variant+'model.js',root).href+"'")
+ .replace('new THREE.WebGLRenderer({antialias:true,alpha:false})','new FakeRenderer()');
+// Only the browser renderer/UI are stubbed. Tests use the actual Three.js geometry,
+// ray intersections, wall collision and movement code from the shipped app.
+const environment="const el=()=>({hidden:false,style:{},classList:{toggle(){}},appendChild(){},addEventListener(){},setAttribute(){},clientWidth:1000,clientHeight:800,checked:true,getContext(){return {}},innerHTML:'',textContent:''});\nconst els=new Map();globalThis.document={getElementById(id){if(!els.has(id))els.set(id,el());return els.get(id)},createElement:el,querySelectorAll(){return []}};globalThis.window={addEventListener(){}};globalThis.devicePixelRatio=1;globalThis.matchMedia=()=>({matches:false});globalThis.ResizeObserver=class{observe(){}};globalThis.Image=class{};globalThis.requestAnimationFrame=()=>{};class FakeRenderer{constructor(){this.domElement=el();this.shadowMap={}}setPixelRatio(){}setSize(){}render(){}}\n";
+const checks="scene.updateMatrixWorld(true);\nlet issues=[],roomCount=0;\nfor(let f=0;f<3;f++)for(let i=0;i<levels[f].rooms.length;i++){jumpRoom(f,i);const p=camera.position,g=groundAt(p.x,p.z,camera.position.y-eye);roomCount++;if(g===undefined||blocked(p.x,p.z,camera.position.y-eye))issues.push('Invalid room spawn '+levels[f].rooms[i][0]);}\nlet stairSamples=0;\nfor(const [f,a,b,y0,y1] of [[0,[638,817],[540,721],yG,(2+5.75)*FT],[0,[541,714],[621,635],(2+5.75)*FT,yF],[1,[757,657],[922,657],yF,(13.5+5.75)*FT],[1,[924,648],[924,499],(13.5+5.75)*FT,yR]]){\n for(const reverse of [false,true]){let prev=reverse?y1:y0;for(let i=0;i<100;i++){let t=(i+.5)/100;if(reverse)t=1-t;const p=world(f,a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t);const support=groundAt(p[0],p[1],prev);stairSamples++;if(support===undefined||blocked(p[0],p[1],support??prev))issues.push('Stair support/collision '+JSON.stringify(a)+' '+i+' '+reverse+' support '+support+' prev '+prev);if(support!==undefined)prev=support;}if(Math.abs(prev-(reverse?y0+(y1-y0)/10:y1))>.02)issues.push('Stair arrival mismatch');}\n}\njumpRoom(0,0);const start=camera.position.clone();yaw=0;keys={KeyW:true};move(.05);if(camera.position.z>=start.z||Math.abs(camera.position.x-start.x)>.001)issues.push('Forward motion');keys={KeyD:true};const oldX=camera.position.x;move(.05);if(camera.position.x<=oldX)issues.push('Strafe motion');\nconsole.log(JSON.stringify({roomSpawns:roomCount,stairSamples,issues},null,2));if(issues.length)process.exitCode=1;\n";
+await import('data:text/javascript;base64,'+Buffer.from(environment+source+checks).toString('base64'));
+}
