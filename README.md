@@ -54,3 +54,11 @@ See [asset credits](site/assets/realism/CREDITS.md) and [Three.js MIT license](s
 The west-facing orientation and DHA Peshawar jurisdiction are assumptions pending confirmation. Design choices and primary research links are in its Design notes panel. The energy panel includes adjustable cooling scenarios and stored PVGIS estimates. **Full off-grid operation is not established:** the default load exceeds annual generation after assumed storage losses. No structural, seismic, MEP or approval claim is made.
 
 Run `node --loader ./scripts/three-loader.mjs scripts/validate-concept.mjs` to check the actual concept geometry: room spawns, room reachability, stairs in both directions, setbacks, pool exclusion and PV module count. No npm installation is required. Furnishings are visual and do not block walking; walls, glazing, railings and pool boundaries do. Lighting illustrates mood and is not a sun/shadow or daylight simulation.
+
+### Sahn House interiors
+
+The concept includes room-specific wall, flooring, joinery and textile palettes, complete furnishings for family and staff spaces, task and bedside lighting, curtains, rugs, artwork, ceiling fans, kitchen and laundry fittings, and outdoor furniture. Open **Interiors** to review each space's colour swatches and furnishings, then enter that room directly. The Furnished switch hides movable furniture and dressings while retaining architectural finishes.
+
+The finish schedule is in `site/concept/interior-design.js`; procedural furniture and placement are in `interiors.js`. Static furniture is batched by material for rendering, with transparent objects kept separate. Colours are illustrative and require physical samples before specification.
+
+`node --loader ./scripts/three-loader.mjs scripts/validate-interiors.mjs` checks finish coverage, room boundaries, furniture overlap, door openings and entry viewpoints. It also verifies that render batching preserves geometry. These are model checks, not building-code, accessibility or furniture-procurement certification.

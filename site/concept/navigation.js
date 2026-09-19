@@ -15,6 +15,9 @@ export function roomSpawn(f,r){
  if(r.id==='family'){x=26;z=63;yaw=Math.PI/2;}
  if(r.kind==='kitchen'||r.kind==='dirty'){x=(a+c)/2;z=(b+d)/2;}
  if(r.kind==='lounge'){x=c-2;z=b+2.5;}
+ // Furnished entry viewpoints sit in clear aisles and face the room's focal furniture.
+ const views={drawing:[18,25.4,13.8,33],parents:[40.6,28.9,36.3,20.5],master:[8.8,23.3,13.8,26.3],bed2:[34.5,26,38,23.8],bed3:[19.6,51.5,10.8,48.6],bed4:[10.4,57.5,14.1,63.4],guest:[25,66.5,23.5,76],lounge:[29.8,25.5,27,29],landing:[20.5,56.5,25.8,60],staff2:[16.2,61.5,10.8,62.5],staff:[22,73,24.6,78.2],dining:[20.8,71.1,24.5,77],cinema:[19.8,26.2,11.4,37.8],mbath:[8.3,35.3,11,37],filter:[38.5,48.5,42,51.6],laundry:[39,49.7,42,52.3]};
+ if(views[r.id]){const v=views[r.id];x=v[0];z=v[1];yaw=Math.atan2(-(v[2]-x),v[3]-z);}
  return {x:(x-25)*FT,z:(45-z)*FT,y:floors[f].elevation*FT,yaw};
 }
 export function navigation(house){

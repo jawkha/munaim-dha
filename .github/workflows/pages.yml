@@ -28,6 +28,7 @@ jobs:
         run: |
           node scripts/validate-model.mjs
           node --loader ./scripts/three-loader.mjs scripts/validate-concept.mjs
+          node --loader ./scripts/three-loader.mjs scripts/validate-interiors.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
