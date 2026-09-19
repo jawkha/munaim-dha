@@ -1,0 +1,89 @@
+{
+  "date": "2026-09-19",
+  "purpose": "Concept sensitivity study, not equipment specification or proof of autonomy",
+  "location": {
+    "lat": 34.02,
+    "lon": 71.5,
+    "basis": "Regional Peshawar point, not a surveyed plot"
+  },
+  "pv": {
+    "peak_kWp": 15.6,
+    "modules": 26,
+    "module_W": 600,
+    "tilt_deg": 15,
+    "azimuth": "south",
+    "pvcalc_entered_loss_percent": 14,
+    "database": "PVGIS-ERA5",
+    "version": "5.3"
+  },
+  "battery": {
+    "nominal_kWh": 120,
+    "model_dod": 0.9,
+    "model_output_efficiency": 0.9,
+    "model_deliverable_kWh": 97.2
+  },
+  "interactive_balance": {
+    "household_kWh_day": 20,
+    "cooking_kWh_day": 4,
+    "hotwater_backup_kWh_day": 2,
+    "pool_kW": 0.55,
+    "pool_hours": 5,
+    "AC_rooms": 7,
+    "AC_hours": 9,
+    "AC_average_kW_per_room": 0.55,
+    "assumed_stored_fraction": 0.6,
+    "assumed_roundtrip_efficiency": 0.81,
+    "excludes": [
+      "EV charging",
+      "pool heating",
+      "site shadows",
+      "battery ageing",
+      "equipment peak sizing",
+      "seasonal occupancy model"
+    ]
+  },
+  "SHScalc": {
+    "endpoint": "https://re.jrc.ec.europa.eu/api/v5_3/SHScalc",
+    "params": {
+      "peakpower": 15600,
+      "batterysize": 120000,
+      "cutoff": 10,
+      "angle": 15,
+      "aspect": 0,
+      "raddatabase": "PVGIS-ERA5",
+      "lat": 34.02,
+      "lon": 71.5
+    },
+    "consumptionday_scenarios_Wh": [
+      55000,
+      70000
+    ],
+    "hourconsumption": [
+      0.036585365853658534,
+      0.036585365853658534,
+      0.036585365853658534,
+      0.036585365853658534,
+      0.036585365853658534,
+      0.036585365853658534,
+      0.024390243902439025,
+      0.024390243902439025,
+      0.024390243902439025,
+      0.024390243902439025,
+      0.036585365853658534,
+      0.036585365853658534,
+      0.04878048780487805,
+      0.04878048780487805,
+      0.04878048780487805,
+      0.04878048780487805,
+      0.04878048780487805,
+      0.04878048780487805,
+      0.036585365853658534,
+      0.04878048780487805,
+      0.06097560975609756,
+      0.06097560975609756,
+      0.06097560975609756,
+      0.04878048780487805
+    ],
+    "interpretation": "These fixed year-round historical tests are independent of the sliders. Empty-battery-day percentage is not the percentage of annual load unserved."
+  }
+}

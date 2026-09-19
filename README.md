@@ -1,7 +1,8 @@
-# House 1084-A walkthrough
+# House walkthroughs · 1084-A and Sahn House
 
 An interactive design study built from the supplied architectural PDF plans and elevation renders.
 
+- [Sahn House: new west-facing courtyard concept](https://jawkha.github.io/munaim-dha/concept/)
 - [Furnished walkthrough](https://jawkha.github.io/munaim-dha/realistic/)
 - [Original spatial model](https://jawkha.github.io/munaim-dha/original.html)
 
@@ -45,3 +46,11 @@ The original drawings govern dimensions. Review any proposed changes and stair h
 ## Credits
 
 See [asset credits](site/assets/realism/CREDITS.md) and [Three.js MIT license](site/assets/THREE-LICENSE.txt). Sofa attribution and material changes are also included in the walkthrough's Drawings & assumptions panel. The furnished model contains CC0 and CC BY 4.0 assets; those licenses do not apply to the user's architectural design or source drawings.
+
+## Sahn House: original design concept
+
+`site/concept/` is an independent 50 × 90 ft design, not a revision traced from the previous blueprint. It accommodates seven family members and three staff: grandparents downstairs; parents, three children and a guest bedroom upstairs; two staff rooms beside an open basement lightwell. It includes a pool court, an independent basement escape stair, a step-free entrance ramp, and a working solar roof.
+
+The west-facing orientation and DHA Peshawar jurisdiction are assumptions pending confirmation. Design choices and primary research links are in its Design notes panel. The energy panel includes adjustable cooling scenarios and stored PVGIS estimates. **Full off-grid operation is not established:** the default load exceeds annual generation after assumed storage losses. No structural, seismic, MEP or approval claim is made.
+
+Run `node --loader ./scripts/three-loader.mjs scripts/validate-concept.mjs` to check the actual concept geometry: room spawns, room reachability, stairs in both directions, setbacks, pool exclusion and PV module count. No npm installation is required. Furnishings are visual and do not block walking; walls, glazing, railings and pool boundaries do. Lighting illustrates mood and is not a sun/shadow or daylight simulation.

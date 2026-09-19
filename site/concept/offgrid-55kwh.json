@@ -1,0 +1,316 @@
+{
+  "inputs": {
+    "location": {
+      "latitude": 34.02,
+      "longitude": 71.5,
+      "elevation": 350.0
+    },
+    "meteo_data": {
+      "radiation_db": "PVGIS-ERA5",
+      "meteo_db": "ERA5",
+      "year_min": 2005,
+      "year_max": 2023,
+      "use_horizon": true,
+      "horizon_db": "DEM-calculated"
+    },
+    "mounting_system": {
+      "fixed": {
+        "slope": {
+          "value": 15.0,
+          "optimal": false
+        },
+        "azimuth": {
+          "value": 0.0,
+          "optimal": false
+        }
+      }
+    },
+    "pv_module": {
+      "peak_power": 15600.0
+    },
+    "battery": {
+      "capacity": 120000.0,
+      "discharge_cutoff_limit": 10.0
+    },
+    "consumption": {
+      "daily": 55000.0,
+      "hourly_profile": "user-defined"
+    }
+  },
+  "outputs": {
+    "monthly": [
+      {
+        "month": 1,
+        "E_d": 44435.4,
+        "E_lost_d": 0.0,
+        "f_f": 0.0,
+        "f_e": 85.83
+      },
+      {
+        "month": 2,
+        "E_d": 48212.94,
+        "E_lost_d": 449.08,
+        "f_f": 4.14,
+        "f_e": 46.8
+      },
+      {
+        "month": 3,
+        "E_d": 53442.21,
+        "E_lost_d": 4004.83,
+        "f_f": 31.07,
+        "f_e": 16.64
+      },
+      {
+        "month": 4,
+        "E_d": 55195.23,
+        "E_lost_d": 13750.61,
+        "f_f": 70.7,
+        "f_e": 3.86
+      },
+      {
+        "month": 5,
+        "E_d": 55026.85,
+        "E_lost_d": 19944.66,
+        "f_f": 93.72,
+        "f_e": 0.0
+      },
+      {
+        "month": 6,
+        "E_d": 54796.06,
+        "E_lost_d": 20252.22,
+        "f_f": 94.04,
+        "f_e": 0.0
+      },
+      {
+        "month": 7,
+        "E_d": 53654.64,
+        "E_lost_d": 9720.86,
+        "f_f": 61.46,
+        "f_e": 3.9
+      },
+      {
+        "month": 8,
+        "E_d": 54058.21,
+        "E_lost_d": 4755.11,
+        "f_f": 41.26,
+        "f_e": 12.05
+      },
+      {
+        "month": 9,
+        "E_d": 54922.01,
+        "E_lost_d": 7266.33,
+        "f_f": 71.58,
+        "f_e": 4.04
+      },
+      {
+        "month": 10,
+        "E_d": 54184.62,
+        "E_lost_d": 4405.47,
+        "f_f": 61.97,
+        "f_e": 2.21
+      },
+      {
+        "month": 11,
+        "E_d": 49234.48,
+        "E_lost_d": 223.13,
+        "f_f": 7.02,
+        "f_e": 39.65
+      },
+      {
+        "month": 12,
+        "E_d": 45562.24,
+        "E_lost_d": 0.0,
+        "f_f": 0.0,
+        "f_e": 97.45
+      }
+    ],
+    "totals": {
+      "d_total": 6939.0,
+      "f_f": 44.88,
+      "f_e": 26.06,
+      "E_lost": 15772.94,
+      "E_miss": 11831.44
+    },
+    "histogram": [
+      {
+        "CS_min": 10.0,
+        "CS_max": 19.0,
+        "f_CS": 17.0
+      },
+      {
+        "CS_min": 19.0,
+        "CS_max": 28.0,
+        "f_CS": 7.0
+      },
+      {
+        "CS_min": 28.0,
+        "CS_max": 37.0,
+        "f_CS": 7.0
+      },
+      {
+        "CS_min": 37.0,
+        "CS_max": 46.0,
+        "f_CS": 4.0
+      },
+      {
+        "CS_min": 46.0,
+        "CS_max": 55.0,
+        "f_CS": 4.0
+      },
+      {
+        "CS_min": 55.0,
+        "CS_max": 64.0,
+        "f_CS": 4.0
+      },
+      {
+        "CS_min": 64.0,
+        "CS_max": 73.0,
+        "f_CS": 5.0
+      },
+      {
+        "CS_min": 73.0,
+        "CS_max": 82.0,
+        "f_CS": 19.0
+      },
+      {
+        "CS_min": 82.0,
+        "CS_max": 91.0,
+        "f_CS": 14.0
+      },
+      {
+        "CS_min": 91.0,
+        "CS_max": 100.0,
+        "f_CS": 20.0
+      }
+    ]
+  },
+  "meta": {
+    "inputs": {
+      "location": {
+        "description": "Selected location",
+        "variables": {
+          "latitude": {
+            "description": "Latitude",
+            "units": "decimal degree"
+          },
+          "longitude": {
+            "description": "Longitude",
+            "units": "decimal degree"
+          },
+          "elevation": {
+            "description": "Elevation",
+            "units": "m"
+          }
+        }
+      },
+      "meteo_data": {
+        "description": "Sources of meteorological data",
+        "variables": {
+          "radiation_db": {
+            "description": "Solar radiation database"
+          },
+          "meteo_db": {
+            "description": "Database used for meteorological variables other than solar radiation"
+          },
+          "year_min": {
+            "description": "First year of the calculations"
+          },
+          "year_max": {
+            "description": "Last year of the calculations"
+          },
+          "use_horizon": {
+            "description": "Include horizon shadows"
+          },
+          "horizon_db": {
+            "description": "Source of horizon data"
+          }
+        }
+      },
+      "mounting_system": {
+        "description": "Mounting system",
+        "choices": "fixed, vertical_axis, inclined_axis, two_axis",
+        "fields": {
+          "slope": {
+            "description": "Inclination angle from the horizontal plane",
+            "units": "degree"
+          },
+          "azimuth": {
+            "description": "Orientation (azimuth) angle of the (fixed) PV system (0 = S, 90 = W, -90 = E)",
+            "units": "degree"
+          }
+        }
+      },
+      "pv_module": {
+        "description": "PV module parameters",
+        "variables": {
+          "peak_power": {
+            "description": "Nominal (peak) power of the PV module",
+            "units": "W"
+          }
+        }
+      }
+    },
+    "outputs": {
+      "monthly": {
+        "type": "time series",
+        "timestamp": "monthly averages",
+        "variables": {
+          "E_d": {
+            "description": "Average energy production per day",
+            "units": "Wh/d"
+          },
+          "E_lost_d": {
+            "description": "Average energy not captured per day",
+            "units": "Wh/d"
+          },
+          "f_f": {
+            "description": "Percentage of days when the battery became full",
+            "units": "%"
+          },
+          "f_e": {
+            "description": "Percentage of days when the battery became empty",
+            "units": "%"
+          }
+        }
+      },
+      "totals": {
+        "type": "time series totals",
+        "variables": {
+          "d_total": {
+            "description": "Number of days used for the calculation",
+            "units": "d"
+          },
+          "f_f": {
+            "description": "Percentage of days when the battery became full",
+            "units": "%"
+          },
+          "f_e": {
+            "description": "Percentage of days when the battery became empty",
+            "units": "%"
+          },
+          "E_lost": {
+            "description": "Average energy not captured per day",
+            "units": "Wh/d"
+          },
+          "E_miss": {
+            "description": "Average energy missing per day",
+            "units": "Wh/d"
+          }
+        }
+      },
+      "histogram": {
+        "type": "histogram",
+        "variables": {
+          "CS": {
+            "description": "Charge state at the end of each hour",
+            "units": "%"
+          },
+          "f_CS": {
+            "description": "Percentage of days with this charge state",
+            "units": "%"
+          }
+        }
+      }
+    }
+  }
+}
